@@ -1,0 +1,22 @@
+%FM 
+clc; clear; close all; 
+
+%parameters; 
+Fs = 50000; % sampling freqeuncy
+t = 0:1/Fs:0.01 % time vecto
+Am = 1; % message amplitude
+fm = 200; %message frequency 
+Ac= 2; % carrier amplitude
+fc = 2000; % carrier frequency
+kf = 100; % frequency deviation constant 
+
+% message signal 
+m = Am*sin(2*pi*fm*t);
+
+%fm signal 
+s_fm= Ac*cos(2*pi*kf*cumsum(m)/Fs);
+
+%plotting signal 
+figure('Name','FM signals', 'NumberTitle','off', 'Position',[100 100 900 700]);
+
+%message sig
