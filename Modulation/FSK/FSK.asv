@@ -1,0 +1,30 @@
+% fsk 
+clc; clear; close all; 
+
+% parameters
+Fs = 2000;% sampling frequency
+Tb = 0.1; %bit duration
+t= 0:1/Fs:Tb; %time vector
+f0 = 50; % frequnency for bit 0
+f1 = 100; %idem for 1
+A =1; %amplitude of carrier
+
+
+%message bits
+bits =[1 0 1 1 0 0 1];
+N = length(bits);
+
+%generate FSK
+fsk = [];
+time=[];
+
+for i =1:N
+    if bit(i) ==1
+        s=A*cos(2*pi*f1*t);
+    else 
+        s =A*cos(2*pi*f0*t);
+    end
+
+    fsk = [fsk s];
+    time 
+
