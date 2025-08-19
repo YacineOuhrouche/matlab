@@ -1,7 +1,7 @@
 # 📡 MIMO (Multiple-Input Multiple-Output) System Simulation in MATLAB  
 
 ## Overview 🚀  
-This project demonstrates the simulation of a **2x2 MIMO system** using **16-QAM modulation** in MATLAB.  
+This  demonstrates the simulation of a **2x2 MIMO system** using **16-QAM modulation** in MATLAB.  
 The simulation evaluates the **Bit Error Rate (BER)** performance of two linear detection techniques:  
 - **Zero Forcing (ZF)**  
 - **Minimum Mean Square Error (MMSE)**  
