@@ -1,0 +1,70 @@
+% fhss
+
+clc; clear ; close all; 
+
+% setting
+Rb = 100; % bits rate
+Tb = 1/Rb; %bit duration
+hopsPerBit = 3; 
+numFreqs = 8; % number of hops channel
+fc_min = 1000; %
+df = 300; % spacing of the frequency
+Fs = 20000; % sampling frequency;
+Nbits = 20; % number of data bits
+
+rng(42);
+
+
+%derived vars
+Tchip = Tb/hopsPerBit; % hop duration
+bits = randi([0 1], 1, Nbits); % random data
+fc_set = fc_min + (0:numFreqs-1)*df; %carrier bank
+numChips = Nbits*hopsPerBit; %tot hop
+hop_idx = randi(numFreqs,1,numChips); % random hop sequence
+fc_chips = fc_set(hop_idx); 
+
+%time vector
+Ns_chip = round(Tchip *Fs); %sample per chip
+t_chip = (0:Ns_chip-1)/Fs; %local tmie within each chip
+Ttotal = Nbits *Tb; %total duration
+time=[];
+fhss_signal =[];
+
+
+%building teh fhss bpsk
+A=1; %amplitude
+
+for k =1:numchips
+    %for which daya that applies in this chip
+    bidIdx = ceil(k/hopsPerBit);
+    b = bits(bitsIdx);
+
+    %bpsk
+    phase = (b==0) *pi;
+    %carrier 
+    fc+ fc_chips(k);
+
+
+    %chip waveform 
+    s_chip = A*cos(2*pi*dc*t_chip+phase);
+
+    %append to full signal and time
+    to = (k-1)*Tchip;
+    fhss_signal=[fhss_signal, s_chip];
+    time=[time, t_chip+t0];
+
+end 
+
+
+%plot
+figure('Color',[0.97 0.97 0.97], 'Position',[100 100 1000 800]);
+
+%bits vs time
+subplot(4,1,1);
+stairs(0:Tb:Ttotal, [bits bits(end)], 'LineWidth', 2);
+ylim([-0.2 1.2]); grid on; 
+xlabel('time');
+ylabel('bits');
+title(sprintf('Digital Bits (Rb = %d bps, hops/bit = %d)', Rb, hopsPerBit));
+
+%f
