@@ -53,24 +53,16 @@ For each controller, a **closed-loop system** is built where the motor is driven
 ### 2. Root Locus
 - Visualizes system poles as controller gain varies.
 - Helps assess **stability margins** and pole locations.
+<img width="898" height="567" alt="Screenshot 2025-08-21 at 14 40 15" src="https://github.com/user-attachments/assets/cbbbbec0-ae86-4f21-8028-60713c20899e" />
 
-<img width="845" height="562" alt="Root Locus 1" src="https://github.com/user-attachments/assets/9c0a8857-d200-4920-9027-9e3a9645d868" />
-
-<img width="862" height="536" alt="Root Locus 2" src="https://github.com/user-attachments/assets/ec99de0a-cf13-471a-897b-9d104e1fae30" />
-
-<img width="857" height="552" alt="Root Locus 3" src="https://github.com/user-attachments/assets/9ac6b7b1-0bec-4c82-9f89-086e94b82b86" />
 
 ---
 
 ### 3. Bode Plots
 - Frequency-domain analysis of each closed-loop system.
 - Provides insight into **gain margin** and **phase margin**.
+<img width="875" height="572" alt="Screenshot 2025-08-21 at 14 40 20" src="https://github.com/user-attachments/assets/f28a0a64-ce98-4734-ab98-d7bc95a42dc1" />
 
-<img width="891" height="559" alt="Bode 1" src="https://github.com/user-attachments/assets/6377a9a7-7ed5-4d3f-8d67-593ecbdddccf" />
-
-<img width="875" height="547" alt="Bode 2" src="https://github.com/user-attachments/assets/75b1653f-8cd5-4fce-bd28-4b308768e719" />
-
-<img width="865" height="545" alt="Bode 3" src="https://github.com/user-attachments/assets/9b677f06-dbf5-495d-850b-4c15fd002762" />
 
 ---
 
