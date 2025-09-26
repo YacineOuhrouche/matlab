@@ -56,13 +56,6 @@ This project demonstrates the design and implementation of ** filters** using MA
 
 ---
 
-## ✅ Key Takeaways
-
-- MATLAB allows easy implementation of both **FIR and IIR digital filters**.  
-- Visualizing signals in **time and frequency domains** is crucial to understand filter effects.  
-- **Bode plots** provide a clear view of filter characteristics beyond the signal itself.  
-
----
 
 ## 🛠️ Future Improvements
 
