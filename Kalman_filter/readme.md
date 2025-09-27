@@ -34,9 +34,11 @@ Since the motion is nonlinear, the EKF linearizes the system at each time step t
 
 ### 1. Position Tracking
 - Compares the **true circular path**, **noisy measurements**, and **EKF estimates**.
+<img width="883" height="567" alt="Screenshot 2025-09-27 at 17 10 16" src="https://github.com/user-attachments/assets/400b22cf-7f23-4502-8d89-d1f9f739c32f" />
 
 ### 2. Velocity Tracking
 - Tracks the **x and y velocities** estimated by the EKF against the true velocities.
+<img width="885" height="567" alt="Screenshot 2025-09-27 at 17 10 23" src="https://github.com/user-attachments/assets/75b90aa7-6a1a-487b-9520-16c9904b851c" />
 
 ---
 
