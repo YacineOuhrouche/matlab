@@ -1,6 +1,6 @@
 # ⚡ Field-Oriented Control (FOC) of a PMSM — MATLAB Simulation
 
-This project demonstrates a **realistic Field-Oriented Control (FOC)** implementation for a **Permanent Magnet Synchronous Motor (PMSM)** using **MATLAB**.  
+This project demonstrates a **Field-Oriented Control (FOC)** implementation for a **Permanent Magnet Synchronous Motor (PMSM)** using **MATLAB**.  
 It models both the **electrical** and **mechanical** dynamics of the motor, with cascaded **current and speed control loops**, feedforward decoupling, and voltage saturation handling.  
 
 The goal is to understand how FOC enables **precise torque and speed control**, which is widely used in **electric vehicle drives**, **industrial motor control**, and **high-performance servo systems**.
@@ -55,22 +55,6 @@ The system is simulated in continuous time with a sampling frequency of **20 kHz
 - Include **cross-coupling decoupling** terms.
 - Maintain torque and flux independently for precise control.
 
----
-
-## 🧮 Mathematical Model
-
-**dq-axis voltage equations:**
-
-- \(v_d = R_s i_d - \omega_e L_q i_q + L_d \frac{di_d}{dt}\)  
-- \(v_q = R_s i_q + \omega_e (L_d i_d + \lambda_m) + L_q \frac{di_q}{dt}\)  
-
-**Electromagnetic torque:**
-
-- \(T_e = \frac{3}{2} p (\lambda_m i_q + (L_d - L_q)i_d i_q)\)
-
-**Mechanical dynamics:**
-
-- \(J \frac{d\omega_m}{dt} = T_e - T_{load} - B\omega_m\)
 
 ---
 
@@ -85,18 +69,8 @@ The system is simulated in continuous time with a sampling frequency of **20 kHz
 ---
 
 ## 📊 Visualization & Results
-
-### 1. Speed Response
-- Tracks the **2000 rpm** reference with minimal overshoot.
-
-### 2. Current Control
-- Tight regulation of `i_q` and `i_d` currents within saturation limits.
-
-### 3. Torque Dynamics
-- Realistic torque ripple and transient performance under load.
-
-### 4. DC-Link Behavior
-- Estimated DC current profile based on electrical power.
+<img width="993" height="740" alt="Screenshot 2025-10-31 at 13 56 28" src="https://github.com/user-attachments/assets/287c1c3e-1cc8-4373-a367-48345cf9433d" />
+<img width="994" height="645" alt="Screenshot 2025-10-31 at 13 56 19" src="https://github.com/user-attachments/assets/c3f6c8d6-58a1-4246-ab93-3043f4e0beb5" />
 
 
 ---
