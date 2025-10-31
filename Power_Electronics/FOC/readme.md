@@ -118,5 +118,3 @@ The system is simulated in continuous time with a sampling frequency of **20 kHz
 ---
 
 
----
-✅ *FOC simulation completed successfully.*
