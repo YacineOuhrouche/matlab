@@ -48,8 +48,6 @@ In this project, a **simplified WLTP-like profile** is used to represent:
 - **Cruising** at moderate speeds  
 - **Deceleration** phases to trigger regenerative braking  
 
-This provides a **realistic variation** in vehicle speed, mimicking how an EV behaves during actual driving — ideal for testing energy recovery and battery response.
-
 ---
 ## 🧠 MATLAB Implementation Overview
 
@@ -113,7 +111,7 @@ The MATLAB script simulates the **drive cycle, battery, and vehicle behavior** i
 ## 🔍 Future Improvements
 
 - Include a **battery thermal model** for temperature effects.  
-- Integrate **PI control** for torque blending between regen and mechanical braking.  
+- Integrate **PI control** for torque blending between regen and mechanical braking. 
 - Extend to multiple **drive cycles**  
 - Couple with a **Field-Oriented Control (FOC)** simulation for a full drivetrain model.
 
