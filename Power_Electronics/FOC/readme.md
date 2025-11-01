@@ -50,9 +50,10 @@ Where:
 - `ω_e` → electrical angular speed  
 
 ### Mechanical Dynamics:
-\[
-J \frac{d\omega_m}{dt} + B \omega_m = T_e - T_{load}
-\]  
+$$
+J \, \dot{\omega}_m + B \, \omega_m = T_e - T_\text{load}
+$$
+
 Where:  
 - `J` → rotor inertia  
 - `B` → viscous friction  
@@ -93,6 +94,55 @@ Where:
 - **Load Torque Ripple:** Simulates real-world torque disturbances for robust testing.  
 
 ---
+
+## 🖥️ MATLAB Script Implementation
+
+The MATLAB script implements the FOC simulation as follows:
+
+### 1. Initialize Motor and Simulation Parameters
+- Define `Rs`, `Ld`, `Lq`, `λm`, number of pole pairs, rotor inertia, friction, DC-link voltage, simulation frequency, and time vector.
+
+### 2. Controller Setup
+- Define PI gains for **current loops (inner)** and **speed loop (outer)**.
+- Set voltage and current limits.
+
+### 3. Preallocate State Variables
+- Currents (`i_d`, `i_q`), voltages (`v_d`, `v_q`), rotor speed (`omega_m`), rotor angle (`theta_r`), torque, DC-link current, and phase currents.
+
+### 4. Simulation Loop (Time-Stepping)
+- **Compute electrical rotor angle** and rotor speed integration.
+- **Speed control:** Calculate torque-producing current reference `i_q*`.
+- **Current control:** PI regulation of `i_d` and `i_q`.
+- **Feedforward decoupling:** Compensate cross-coupling terms in voltage calculation.
+- **Voltage saturation:** Apply SVPWM voltage limits.
+- **Motor dynamics:** Update currents (`i_d`, `i_q`) and compute electromagnetic torque.
+- **Mechanical dynamics:** Update rotor speed (`omega_m`) including load torque.
+- **Phase currents reconstruction** from dq-frame to abc-frame.
+- **DC-link current estimation** from instantaneous power.
+
+### 5. Plot Results
+- **Rotor speed vs. reference**
+- **Electromagnetic torque**
+- **dq-axis currents and DC-link current**
+
+This setup demonstrates **realistic FOC behavior**, including speed regulation, torque control, and robustness to load variations.
+
+---
+
+## 📊 Visualization & Results
+
+### Rotor Speed and Torque
+- Plots show rotor speed tracking the reference and torque response under load.
+
+### dq Currents and DC-Link Current
+- Plots show `i_d` maintaining flux control (near 0 for surface PMSM) and `i_q` following the torque demand, while DC-link current reflects power drawn.
+
+---
+
+## ✅ Key Takeaways
+- FOC achieves **independent torque and flux control** for PMSMs.
+- Proper **PI tuning** ensures stable speed a
+
 
 ## 📊 Visualization & Results
 
