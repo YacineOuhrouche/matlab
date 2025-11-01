@@ -129,19 +129,9 @@ This setup demonstrates **realistic FOC behavior**, including speed regulation, 
 
 ---
 
-## 📊 Visualization & Results
-
-### Rotor Speed and Torque
-- Plots show rotor speed tracking the reference and torque response under load.
-
-### dq Currents and DC-Link Current
-- Plots show `i_d` maintaining flux control (near 0 for surface PMSM) and `i_q` following the torque demand, while DC-link current reflects power drawn.
-
----
-
 ## ✅ Key Takeaways
 - FOC achieves **independent torque and flux control** for PMSMs.
-- Proper **PI tuning** ensures stable speed a
+- Proper **PI tuning** ensures stable speed
 
 
 ## 📊 Visualization & Results
