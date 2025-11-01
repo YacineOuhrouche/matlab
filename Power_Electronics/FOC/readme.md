@@ -9,37 +9,69 @@ The goal is to understand how FOC enables **precise torque and speed control**, 
 
 ## 🌀 What is Field-Oriented Control (FOC)?
 
-Field-Oriented Control (FOC), also known as **vector control**, is a technique for controlling AC motors (like PMSMs or BLDC motors) by **decoupling torque and flux control**, making the motor behave like a separately excited DC motor.  
+Field-Oriented Control (FOC), also known as **vector control**, is a method to control AC motors (like PMSMs or BLDC motors) by **decoupling torque and flux components** of stator currents.  
+This allows the motor to behave **like a separately excited DC motor**, where flux and torque are independently controllable.
 
-Key points:  
-- Converts three-phase currents into a rotating **dq-axis reference frame** aligned with the rotor flux.  
-- Regulates **d-axis current (`i_d`)** to control flux, and **q-axis current (`i_q`)** to control torque independently.  
-- Enables **fast dynamic response**, **high efficiency**, and **smooth torque output**.  
-- Commonly used in **electric vehicles**, **robotics**, and **precision servo drives**.
+### Key Concepts:
+- **dq-axis transformation:** Three-phase currents (`i_a, i_b, i_c`) are transformed into a **rotating reference frame** aligned with the rotor flux.  
+  - `i_d` → controls **magnetic flux**  
+  - `i_q` → controls **electromagnetic torque**  
+- **Decoupling:** Cross-coupling between d- and q-axis is compensated via feedforward terms, improving dynamic performance.  
+- **Nested Control Loops:**
+  - **Inner loop:** Regulates dq currents at high bandwidth (~kHz range)  
+  - **Outer loop:** Regulates speed or position at lower bandwidth  
 
-Benefits:  
-- Independent torque and flux control → precise and smooth operation.  
-- Efficient operation across wide speed ranges.  
-- Reduces torque ripple compared to simpler control methods.  
+### Advantages of FOC:
+- Smooth and precise torque control  
+- Fast dynamic response and accurate speed tracking  
+- Reduced torque ripple and losses  
+- Widely used in EVs, robotics, and industrial drives  
 
 ---
 
-## ⚙️ System Overview
+## ⚙️ PMSM Model Overview
 
-The PMSM model includes key machine parameters:
+The PMSM is modeled using **dq-axis voltage equations** and **mechanical dynamics**.  
 
-| Parameter | Symbol | Description | Typical Value |
-|------------|---------|-------------|----------------|
-| Rs | `R_s` | Stator resistance | 0.03 Ω |
-| Ld | `L_d` | d-axis inductance | 0.0006 H |
-| Lq | `L_q` | q-axis inductance | 0.0007 H |
-| λm | `lambda_m` | Permanent magnet flux linkage | 0.015 Wb |
-| p | `p` | Pole pairs | 4 |
-| J | `J` | Rotor inertia | 0.02 kg·m² |
-| B | `B` | Friction coefficient | 0.001 N·m·s |
-| Vdc | `V_dc` | DC-link voltage | 300 V |
+### Electrical Dynamics:
+$$
+\begin{cases}
+v_d = R_s i_d + L_d \dfrac{di_d}{dt} - \omega_e L_q i_q \\[2mm]
+v_q = R_s i_q + L_q \dfrac{di_q}{dt} + \omega_e (L_d i_d + \lambda_m)
+\end{cases}
+$$
 
-The system is simulated in continuous time with a sampling frequency of **20 kHz**.
+
+Where:  
+- `v_d, v_q` → dq-axis voltages applied by inverter  
+- `i_d, i_q` → dq-axis currents  
+- `R_s, L_d, L_q` → stator resistance and inductances  
+- `λ_m` → permanent magnet flux linkage  
+- `ω_e` → electrical angular speed  
+
+### Mechanical Dynamics:
+\[
+J \frac{d\omega_m}{dt} + B \omega_m = T_e - T_{load}
+\]  
+Where:  
+- `J` → rotor inertia  
+- `B` → viscous friction  
+- `T_e` → electromagnetic torque (`3/2 * p * (λ_m i_q + (L_d-L_q) i_d i_q)`)  
+- `T_load` → applied mechanical load  
+
+### Simulation Parameters:
+
+| Parameter | Symbol | Description | Value |
+|-----------|--------|-------------|-------|
+| Stator resistance | Rs | Electrical resistance of stator | 0.03 Ω |
+| d-axis inductance | Ld | d-axis stator inductance | 0.0006 H |
+| q-axis inductance | Lq | q-axis stator inductance | 0.0007 H |
+| Permanent magnet flux | λm | Rotor flux linkage | 0.015 Wb |
+| Pole pairs | p | Number of rotor pole pairs | 4 |
+| Rotor inertia | J | Mechanical inertia | 0.02 kg·m² |
+| Viscous friction | B | Rotor friction | 0.001 N·m·s |
+| DC-link voltage | Vdc | Inverter voltage | 300 V |
+| Simulation freq | fsim | Sampling frequency | 20 kHz |
 
 ---
 
@@ -55,23 +87,20 @@ The system is simulated in continuous time with a sampling frequency of **20 kHz
 - Include **cross-coupling decoupling** terms.
 - Maintain torque and flux independently for precise control.
 
-
----
-
-## 🧩 Simulation Highlights
-
-✅ **Nested PI Controllers** for speed and current loops  
-✅ **Feedforward Decoupling** for dq-axis cross coupling  
-✅ **SVPWM Voltage Limit** handling (`0.577 × Vdc`)  
-✅ **Anti-Windup Integrator Protection**  
-✅ **Load Torque Ripple** for realistic response  
+### 🧩 Additional Features
+- **SVPWM Voltage Limit:** Voltage reference is capped at `0.577 × Vdc` for sinusoidal PWM implementation.  
+- **Anti-Windup:** Integral terms are limited to prevent controller saturation.  
+- **Load Torque Ripple:** Simulates real-world torque disturbances for robust testing.  
 
 ---
 
 ## 📊 Visualization & Results
-<img width="993" height="740" alt="Screenshot 2025-10-31 at 13 56 28" src="https://github.com/user-attachments/assets/287c1c3e-1cc8-4373-a367-48345cf9433d" />
-<img width="994" height="645" alt="Screenshot 2025-10-31 at 13 56 19" src="https://github.com/user-attachments/assets/c3f6c8d6-58a1-4246-ab93-3043f4e0beb5" />
 
+### Rotor Speed and Torque
+![Speed and Torque Plot](https://github.com/user-attachments/assets/287c1c3e-1cc8-4373-a367-48345cf9433d)
+
+### dq Currents and DC-Link Current
+![Currents and DC Link Plot](https://github.com/user-attachments/assets/c3f6c8d6-58a1-4246-ab93-3043f4e0beb5)
 
 ---
 
@@ -79,16 +108,14 @@ The system is simulated in continuous time with a sampling frequency of **20 kHz
 
 - FOC achieves **independent torque and flux control** for PMSMs.  
 - Proper **PI tuning** ensures stable speed and current regulation.  
-- Decoupling and saturation handling are vital for realistic control.  
+- Decoupling, voltage limits, and anti-windup are critical for realistic control.  
+- Simulated load disturbances demonstrate robustness of the FOC strategy.  
 
 ---
 
 ## 🛠️ Future Work
 
 - Extend to **sensorless FOC** using back-EMF estimation.  
-- Implement **field-weakening control** for high-speed range.  
+- Implement **field-weakening control** for high-speed operation.  
 - Integrate a **3-phase inverter model** for hardware-level validation.  
-
----
-
-
+- Include **dynamic reference trajectories** to test advanced control strategies.
