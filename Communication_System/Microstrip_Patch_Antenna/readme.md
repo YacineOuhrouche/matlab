@@ -1,4 +1,4 @@
-# 📡 Microstrip Patch Antenna (Strip-Fed Slot) Project  
+#  Microstrip Patch Antenna (Strip-Fed Slot) Project  
 
 ## Overview 🚀  
 This project demonstrates the design and simulation of a **strip-fed slot microstrip patch antenna** using **MATLAB Antenna Toolbox**.  
@@ -6,7 +6,7 @@ The antenna is designed on an **FR4 PCB substrate** to operate near **1.94 GHz**
 
 ---
 
-## Why Use a Microstrip Patch Antenna? 📶  
+## Why Use a Microstrip Patch Antenna? 
 - **Low Profile:** Ideal for compact, portable devices.  
 - **Lightweight & Inexpensive:** Can be fabricated on standard PCB material.  
 - **Customizable:** Shape, size, and feed can be tuned for specific frequencies.  
@@ -14,7 +14,7 @@ The antenna is designed on an **FR4 PCB substrate** to operate near **1.94 GHz**
 
 ---
 
-## Antenna Specifications 📋  
+## Antenna Specifications  
 
 | Parameter              | Value            | Description                              |
 |------------------------|------------------|------------------------------------------|
@@ -37,7 +37,7 @@ The antenna is designed on an **FR4 PCB substrate** to operate near **1.94 GHz**
 
 ---
 
-## Simulation Results 📊  
+## Simulation Results  
 - **Radiation Pattern:** Shows the directional gain at 1.94 GHz.  
 - **Input Impedance Plot:** Displays impedance variation across the frequency range.  
 - **S11 Return Loss:** Indicates how well the antenna is matched to 50 Ω.  
@@ -51,7 +51,7 @@ The antenna is designed on an **FR4 PCB substrate** to operate near **1.94 GHz**
 
 ##
 
-## Future Enhancements 🔮  
+## Future Enhancements   
 - Optimize slot dimensions for improved bandwidth.  
 - Implement microstrip line feed for different matching characteristics.  
 - Use a **low-loss substrate** for higher efficiency at GHz frequencies.  
