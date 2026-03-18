@@ -1,4 +1,4 @@
-# 🚀 PID Control of a DC Motor
+# PID Control of a DC Motor
 
 This project demonstrates the modeling and control of a **DC motor** using different **PID control strategies** in MATLAB. The goal is to analyze and compare how **manual tuning**, **MATLAB’s auto-tune (`pidtune`)**, and **Ziegler–Nichols tuning** affect the motor’s performance.
 
@@ -18,7 +18,7 @@ The transfer function relates **input voltage** to **angular speed**.
 
 ---
 
-## 🎛️ Controllers Implemented
+##  Controllers Implemented
 
 ### 1. Manual PID
 - Proportional, integral, and derivative gains chosen manually.
@@ -34,13 +34,13 @@ The transfer function relates **input voltage** to **angular speed**.
 
 ---
 
-## 🔄 Closed-Loop Configurations
+##  Closed-Loop Configurations
 
 For each controller, a **closed-loop system** is built where the motor is driven to track a desired reference input.
 
 ---
 
-## 📈 Analysis Performed
+##  Analysis Performed
 
 ### 1. Step Response
 - Shows how the motor tracks a reference speed.
@@ -77,7 +77,7 @@ For each controller, a **closed-loop system** is built where the motor is driven
 
 ---
 
-## 📊 Results & Observations
+##  Results & Observations
 
 From the simulations, each controller shows distinct behavior:
 
@@ -91,7 +91,7 @@ From the simulations, each controller shows distinct behavior:
 
 ---
 
-## ✅ Key Takeaways
+##  Key Takeaways
 
 - The project highlights how different tuning methods impact system behavior.  
 - **Trade-offs** exist between speed, overshoot, and stability.  
