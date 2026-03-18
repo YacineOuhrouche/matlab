@@ -1,4 +1,4 @@
-# ⚡ Field-Oriented Control (FOC) of a PMSM — MATLAB Simulation
+# Field-Oriented Control (FOC) of a PMSM — MATLAB Simulation
 
 This project demonstrates a **Field-Oriented Control (FOC)** implementation for a **Permanent Magnet Synchronous Motor (PMSM)** using **MATLAB**.  
 It models both the **electrical** and **mechanical** dynamics of the motor, with cascaded **current and speed control loops**, feedforward decoupling, and voltage saturation handling.  
@@ -7,7 +7,7 @@ The goal is to understand how FOC enables **precise torque and speed control**, 
 
 ---
 
-## 🌀 What is Field-Oriented Control (FOC)?
+##  What is Field-Oriented Control (FOC)?
 
 Field-Oriented Control (FOC), also known as **vector control**, is a method to control AC motors (like PMSMs or BLDC motors) by **decoupling torque and flux components** of stator currents.  
 This allows the motor to behave **like a separately excited DC motor**, where flux and torque are independently controllable.
@@ -29,7 +29,7 @@ This allows the motor to behave **like a separately excited DC motor**, where fl
 
 ---
 
-## ⚙️ PMSM Model Overview
+##  PMSM Model Overview
 
 The PMSM is modeled using **dq-axis voltage equations** and **mechanical dynamics**.  
 
@@ -76,26 +76,26 @@ Where:
 
 ---
 
-## 🎯 Control Architecture
+##  Control Architecture
 
-### 🌀 Outer Speed Loop
+###  Outer Speed Loop
 - Generates the **torque-producing current** reference `i_q*`.
 - PI controller with **anti-windup**.
 - Enforces current saturation limits.
 
-### ⚡ Inner Current Loops
+###  Inner Current Loops
 - Regulate the **d-axis (`i_d`)** and **q-axis (`i_q`)** currents.
 - Include **cross-coupling decoupling** terms.
 - Maintain torque and flux independently for precise control.
 
-### 🧩 Additional Features
+###  Additional Features
 - **SVPWM Voltage Limit:** Voltage reference is capped at `0.577 × Vdc` for sinusoidal PWM implementation.  
 - **Anti-Windup:** Integral terms are limited to prevent controller saturation.  
 - **Load Torque Ripple:** Simulates real-world torque disturbances for robust testing.  
 
 ---
 
-## 🖥️ MATLAB Script Implementation
+## MATLAB Script Implementation
 
 The MATLAB script implements the FOC simulation as follows:
 
@@ -129,12 +129,12 @@ This setup demonstrates **realistic FOC behavior**, including speed regulation, 
 
 ---
 
-## ✅ Key Takeaways
+##  Key Takeaways
 - FOC achieves **independent torque and flux control** for PMSMs.
 - Proper **PI tuning** ensures stable speed
 
 
-## 📊 Visualization & Results
+##  Visualization & Results
 
 ### Rotor Speed and Torque
 ![Speed and Torque Plot](https://github.com/user-attachments/assets/287c1c3e-1cc8-4373-a367-48345cf9433d)
@@ -144,7 +144,7 @@ This setup demonstrates **realistic FOC behavior**, including speed regulation, 
 
 ---
 
-## ✅ Key Takeaways
+##  Key Takeaways
 
 - FOC achieves **independent torque and flux control** for PMSMs.  
 - Proper **PI tuning** ensures stable speed and current regulation.  
@@ -153,9 +153,3 @@ This setup demonstrates **realistic FOC behavior**, including speed regulation, 
 
 ---
 
-## 🛠️ Future Work
-
-- Extend to **sensorless FOC** using back-EMF estimation.  
-- Implement **field-weakening control** for high-speed operation.  
-- Integrate a **3-phase inverter model** for hardware-level validation.  
-- Include **dynamic reference trajectories** to test advanced control strategies.
